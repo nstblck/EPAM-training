@@ -9,14 +9,16 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         // Приветствовать любого пользователя при вводе его имени через командную строку.
         System.out.println("Введите ваше имя");
-        String name = scanner.next();
+        String name = scanner.nextLine();
         System.out.println("Здравствуйте, " + name);
         // Отобразить в окне консоли аргументы командной строки в обратном порядке.
+        System.out.println("Введите аргументы");
         String arguments = scanner.nextLine();
         String argumentsReverse = new StringBuffer(arguments).reverse().toString();
         System.out.println(argumentsReverse);
         //Вывести заданное количество случайных чисел с переходом и без перехода на новую строку
         Random random = new Random();
+        System.out.println("Введите количество случайных чисел");
         int count = scanner.nextInt();
         int maxValue = Integer.MAX_VALUE;
         int i;
@@ -29,16 +31,19 @@ public class Main {
         // подсчитать их сумму (произведение) и вывести результат на консоль.
         int sum = 0;
         int product = 1;
+        System.out.println("Введите целые числа для подсчета суммы и произведения");
         while (scanner.hasNextInt()) {
             int summand = scanner.nextInt();
             sum = sum + summand;
             product = product * summand;
         }
-        System.out.println("Sum = " + sum);
-        System.out.println("Product = " + product);
+        scanner.nextLine();
+        System.out.println("Сумма = " + sum);
+        System.out.println("Произведение = " + product);
 
         //Ввести число от 1 до 12. Вывести на консоль название месяца,
         // соответствующего данному числу. Осуществить проверку корректности ввода чисел.
+        System.out.println("Введите число");
         int numberOfMonth = scanner.nextInt();
         if (numberOfMonth > 12 || numberOfMonth <= 0) {
             System.out.println("Incorrect");
