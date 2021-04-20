@@ -11,16 +11,16 @@ public class Book {
         id = iD++;
     }
 
-    public Book(String bookName_, String authorName_, String typeOfCover_,
-                String publishing_, int yearOfPublishing_, int numberOfPages_, int price_) {
+    public Book(String bookName, String authorName, String typeOfCover,
+                String publishing, int yearOfPublishing, int numberOfPages, int price) {
         this();
-        bookName = bookName_;
-        authorName = authorName_;
-        typeOfCover = typeOfCover_;
-        publishing = publishing_;
-        this.yearOfPublishing = yearOfPublishing_;
-        this.numberOfPages = numberOfPages_;
-        this.price = price_;
+        this.bookName = bookName;
+        this.authorName = authorName;
+        this.typeOfCover = typeOfCover;
+        this.publishing = publishing;
+        this.yearOfPublishing = yearOfPublishing;
+        this.numberOfPages = numberOfPages;
+        this.price = price;
     }
 
     public String toString() {

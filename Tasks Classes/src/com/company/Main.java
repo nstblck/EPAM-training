@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
         Book[] arrayBooks = createBook();
         Scanner scanner = new Scanner(System.in);
-        //Вывести: a) список книг заданного автора
+        //Вывести: список книг заданного автора
         System.out.println("Введите фамилию автора:");
         String surname = scanner.nextLine();
         for (int i = 0; i < arrayBooks.length; i++) {
@@ -17,17 +17,18 @@ public class Main {
             }
         }
 
-        //Вывести б) список книг, выпущенных заданным издательством;
+        //Вывести список книг, выпущенных заданным издательством;
         System.out.println("Введите название издательства:");
         String publishName = scanner.nextLine();
         for (int i = 0; i < arrayBooks.length; i++) {
             Book book = arrayBooks[i];
-            if (book.getPublishing().toLowerCase(Locale.ROOT).equals(publishName.toLowerCase(Locale.ROOT))) {
+            if (book.getPublishing().equalsIgnoreCase(publishName))
+            {
                 System.out.println(book);
             }
         }
 
-        //Вывести в)список книг, выпущенных после заданного года
+        //Вывести список книг, выпущенных после заданного года
         System.out.println("Введите год:");
         int year = scanner.nextInt();
         for (int i = 0; i < arrayBooks.length; i++) {
