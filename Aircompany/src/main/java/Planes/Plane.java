@@ -27,9 +27,7 @@ abstract public class Plane {
         return maxFlightDistance;
     }
 
-    public int getMinLoadCapacity() {
-//        int result = this.maxLoadCapacity;
-//        return result;
+    public int getMaxLoadCapacity() {
         int maxLoadCapacity = this.maxLoadCapacity;
         return maxLoadCapacity;
     }
@@ -44,9 +42,7 @@ abstract public class Plane {
 
     @Override
     public boolean equals(Object o) {
-        //if (this == o) return true;
         this.equals(o);
-        //if (!(o instanceof Plane)) return false; заменила на ниже
         if (o instanceof Plane) return true;
         Plane plane = (Plane) o;
         return maxSpeed == plane.maxSpeed &&

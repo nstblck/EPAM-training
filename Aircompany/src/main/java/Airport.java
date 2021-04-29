@@ -15,7 +15,6 @@ public class Airport {
 
 
     public List<PassengerPlane> getPassengerPlanes() {
-        //List<? extends Plane> l = this.planes;
         List<PassengerPlane> passengerPlanes = new ArrayList<>();
         for (Plane plane : planes) {
             if (plane instanceof PassengerPlane) {
@@ -101,10 +100,10 @@ public class Airport {
         return this;
     }
 
-    public Airport sortByMaxLoadCapacity() { //тут в названии макс а в переменных мин
+    public Airport sortByMaxLoadCapacity() {
         Collections.sort(planes, new Comparator<Plane>() {
             public int compare(Plane o1, Plane o2) {
-                return o1.getMinLoadCapacity() - o2.getMinLoadCapacity();
+                return o1.getMaxLoadCapacity() - o2.getMaxLoadCapacity();
             }
         });
         return this;

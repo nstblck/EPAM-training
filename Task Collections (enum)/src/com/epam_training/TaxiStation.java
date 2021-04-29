@@ -45,7 +45,7 @@ public class TaxiStation {
             if (taxiStation.get(i).getSpeed() >= from && taxiStation.get(i).getSpeed() <= to) {
                 carsSelectedBySpeed.add(taxiStation.get(i));
             }
-        } 
+        }
         return carsSelectedBySpeed;
     }
 }
