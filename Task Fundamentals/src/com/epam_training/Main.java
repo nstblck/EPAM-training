@@ -6,7 +6,6 @@ import java.util.Random;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
         System.out.println("Введите ваше имя");
         sayHello();
         System.out.println("Введите аргументы");
