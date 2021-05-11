@@ -1,5 +1,5 @@
-package com.epam_training;
+package com.epam_training.Models;
 
-public enum CarsModels {
+public enum PassengerCarModel {
      SMART, SUZUKI, FORD, HONDA, BMW, OPEL, AUDI, MASERATI, KIA, CADILLAC, CHEVROLET
 }

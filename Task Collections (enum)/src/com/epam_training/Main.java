@@ -1,5 +1,8 @@
 package com.epam_training;
 
+import com.epam_training.Cars.Car;
+
+import java.io.*;
 import java.util.*;
 
 public class Main {
@@ -13,5 +16,6 @@ public class Main {
         System.out.println();
         System.out.println("Введите значения скорости \"от\" и \"до\" для подбора автомобиля");
         System.out.println(taxiStation.getCarsSelectedBySpeed(scanner.nextInt(), scanner.nextInt()));
+        System.out.println("Автомобили, подходящие под веденные параметры, выше: ");
     }
 }

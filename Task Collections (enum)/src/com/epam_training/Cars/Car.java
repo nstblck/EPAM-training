@@ -1,24 +1,33 @@
-package com.epam_training;
+package com.epam_training.Cars;
 
 
-public class Car {
+import com.epam_training.Models.PassengerCarModel;
+import com.epam_training.PersistentData;
+
+import java.io.*;
+
+public class Car extends PersistentData {
     private int price;
     private double fuelConsumption;
     private double speed;
-    private CarsModels model;
+    private PassengerCarModel model;
 
-    public Car(int price, double fuelConsumption, double speed, CarsModels model) {
+    public Car(int price, double fuelConsumption, double speed, PassengerCarModel model) {
         this.price = price;
         this.fuelConsumption = fuelConsumption;
         this.speed = speed;
         this.model = model;
     }
 
-    public CarsModels getModel() {
+    public Car() {
+
+    }
+
+    public PassengerCarModel getModel() {
         return model;
     }
 
-    public void setModel(CarsModels model) {
+    public void setModel(PassengerCarModel model) {
         this.model = model;
     }
 
