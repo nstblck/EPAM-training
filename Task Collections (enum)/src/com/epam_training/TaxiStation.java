@@ -7,7 +7,7 @@ import com.epam_training.Models.PassengerCarModel;
 import java.util.*;
 
 public class TaxiStation {
-    private List<Car> taxiStation = new ArrayList<>();
+    private List<Car> taxiStation = new ArrayList<Car>();
 
 
     public TaxiStation() {
@@ -43,7 +43,7 @@ public class TaxiStation {
     }
 
     public List<Car> getCarsSelectedBySpeed(int from, int to) {
-        List<Car> carsSelectedBySpeed = new ArrayList<>();
+        List<Car> carsSelectedBySpeed = new ArrayList<Car>();
         for (int i = 0; i < taxiStation.size(); i++) {
             if (taxiStation.get(i).getSpeed() >= from && taxiStation.get(i).getSpeed() <= to) {
                 carsSelectedBySpeed.add(taxiStation.get(i));

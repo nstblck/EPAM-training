@@ -1,0 +1,7 @@
+<project>
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.epam_training</groupId>
+    <artifactId>task_collections_enum</artifactId>
+    <version>1</version>
+</project>
