@@ -1,0 +1,59 @@
++--Aircompany/
+|  +--.DS_Store
+|  +--target/
+|  |  +--test-classes/
+|  |  |  +--AirportTest.class
+|  |  +--generated-sources/
+|  |  |  +--annotations/
+|  |  +--classes/
+|  |  |  +--Planes/
+|  |  |  |  +--ExperimentalPlane.class
+|  |  |  |  +--MilitaryPlane.class
+|  |  |  |  +--PassengerPlane.class
+|  |  |  |  +--Plane.class
+|  |  |  +--Runner.class
+|  |  |  +--Models/
+|  |  |  |  +--ExperimentalTypes.class
+|  |  |  |  +--MilitaryType.class
+|  |  |  |  +--ClassificationLevel.class
+|  |  |  +--Airport.class
+|  |  +--generated-test-sources/
+|  |  |  +--test-annotations/
+|  +--pom.xml
+|  +--aircompany.iml
+|  +--.gitignore
+|  +--lib/
+|  +--.idea/
+|  |  +--uiDesigner.xml
+|  |  +--jarRepositories.xml
+|  |  +--libraries/
+|  |  |  +--Maven__com_beust_jcommander_1_72.xml
+|  |  |  +--Maven__org_testng_testng_7_0_0_beta1.xml
+|  |  |  +--com_epam_jdi_jdi_matchers_testng_2_0_27.xml
+|  |  +--vcs.xml
+|  |  +--.gitignore
+|  |  +--workspace.xml
+|  |  +--modules.xml
+|  |  +--.name
+|  |  +--misc.xml
+|  |  +--compiler.xml
+|  +--src/
+|  |  +--.DS_Store
+|  |  +--test/
+|  |  |  +--java/
+|  |  |  |  +--AirportTest.java
+|  |  +--main/
+|  |  |  +--.DS_Store
+|  |  |  +--java/
+|  |  |  |  +--Planes/
+|  |  |  |  |  +--MilitaryPlane.java
+|  |  |  |  |  +--ExperimentalPlane.java
+|  |  |  |  |  +--PassengerPlane.java
+|  |  |  |  |  +--Plane.java
+|  |  |  |  +--.DS_Store
+|  |  |  |  +--Runner.java
+|  |  |  |  +--Models/
+|  |  |  |  |  +--ClassificationLevel.java
+|  |  |  |  |  +--ExperimentalTypes.java
+|  |  |  |  |  +--MilitaryType.java
+|  |  |  |  +--Airport.java

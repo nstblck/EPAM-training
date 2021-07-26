@@ -1,0 +1,63 @@
+;redaeRdereffuB.oi.avaj tropmi
+;eliF.oi.avaj tropmi
+;noitpecxEdnuoFtoNeliF.oi.avaj tropmi
+;redaeReliF.oi.avaj tropmi
+;noitpecxEOI.oi.avaj tropmi
+;tsiLyarrA.litu.avaj tropmi
+;snoitcelloC.litu.avaj tropmi
+
+{ niaM ssalc cilbup
+;)"txt.gnoS/artxE munE/gniniart_MAPE/stcejorPaedI/resu/sresU/"(eliF wen = elif eliF citats    
+;)(><tsiLyarrA wen = gnoStsiLyarra >gnirtS<tsiLyarrA citats    
+
+{ )sgra ][gnirtS(niam diov citats cilbup    
+;)(eliFmorFmeoPdaer        
+;)(tsiLyarrAoTdda        
+;)gnoStsiLyarra(nltnirp.tuo.metsyS        
+;)(tsiLtros        
+}    
+
+
+{ )(tsiLyarrAoTdda diov citats cilbup    
+{ yrt        
+;)elif(redaeReliF wen = redaer redaeReliF            
+;)redaer(redaeRdereffuB wen = redaeRdereffub redaeRdereffuB            
+;enil gnirtS            
+{ od            
+;)(eniLdaer.redaeRdereffub = enil                
+;))(eniLdaer.redaeRdereffub(dda.gnoStsiLyarra                
+;)llun =! enil( elihw }            
+;)(esolc.redaer            
+;)(esolc.redaeRdereffub            
+{ )gnoStsiLyarra : sgra gnirtS( rof            
+;)sgra(nltnirp.tuo.metsyS                
+}            
+{ )e noitpecxEdnuoFtoNeliF( hctac }        
+;)(ecarTkcatStnirp.e            
+{ )e noitpecxEOI( hctac }        
+;)(ecarTkcatStnirp.e            
+}        
+
+}    
+
+{ )(eliFmorFmeoPdaer diov citats cilbup    
+{ yrt        
+;)elif(redaeReliF wen = redaer redaeReliF            
+;)redaer(redaeRdereffuB wen = redaeRdereffub redaeRdereffuB            
+;enil gnirtS            
+{ od            
+;)(eniLdaer.redaeRdereffub = enil                
+;)enil(nltnirp.tuo.metsyS                
+;)llun =! enil( elihw }            
+;)(esolc.redaer            
+;)(esolc.redaeRdereffub            
+{ )e noitpecxEdnuoFtoNeliF( hctac }        
+;)(ecarTkcatStnirp.e            
+{ )e noitpecxEOI( hctac }        
+;)(ecarTkcatStnirp.e            
+}        
+}    
+{ )(tsiLtros diov citats cilbup    
+;))(htgnel.a - )(htgnel.b >- )b ,a( ,gnoStsiLyarra(tros.snoitcelloC        
+}    
+}
