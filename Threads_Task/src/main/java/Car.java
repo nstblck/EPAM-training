@@ -1,5 +1,5 @@
 public class Car implements Runnable{
-    
+
     private static final int waitingTime = 30;
     private int id;
     private Parking parking;

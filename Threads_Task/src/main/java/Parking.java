@@ -24,7 +24,7 @@ import java.util.List;
         }
 
         public synchronized ParkingPlace tryParking(Car car, int waitingTime) {
-            int numTrying = 0;
+            int numberOfTrying = 0;
             boolean success = false;
             while (!success) {
                 for (ParkingPlace parkingPlace : places) {
@@ -32,10 +32,10 @@ import java.util.List;
                         return parkingPlace;
                     }
                 }
-                if (!success) {
+                if (success = true) {
                     try {
-                        numTrying++;
-                        if (checkAttemptsCount(numTrying, waitingTime, car)) {
+                        numberOfTrying++;
+                        if (checkAttemptsCount(numberOfTrying, waitingTime, car)) {
                             return null;
                         }
                     } catch (InterruptedException e) {
