@@ -1,5 +1,6 @@
 package page;
 
+import com.google.common.base.CharMatcher;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Action;
@@ -27,7 +28,9 @@ public class CloudCalculatorPage extends AbstractPage {
 
     private By googleSearchSmallButton = By.xpath("//input[@class='devsite-search-field devsite-search-query']");
     private By searchForm = By.className("devsite-search-form");
-    private By linkToCalculator = By.xpath("//b[text()='Google Cloud Platform Pricing Calculator']/parent::a");
+    //private By linkToCalculator = By.xpath("//b[text()='Google Cloud Platform Pricing Calculator']/parent::a");
+    //private By linkToCalculator = By.xpath("//a[text()='Google Cloud Platform Pricing Calculator']/parent::div");
+    private By linkToCalculator = By.xpath("//a[@href='https://cloud.google.com/products/calculator?hl=en']/parent::div");
     private By computeEngineSection = By.xpath("//*[@class='tab-holder compute']/parent::md-tab-item");//нашло, не трогай
     private By numberOfInstances = By.xpath("//md-input-container/child::input[@ng-model='listingCtrl.computeServer.quantity']");//тут поломано
     private By operatingSystemMenu = By.xpath("//md-input-container[@class='flex md-input-has-value']");
@@ -47,12 +50,15 @@ public class CloudCalculatorPage extends AbstractPage {
     private By localSSDType = By.id("select_option_414");//было 403
     private By dataCenterLocation = By.xpath("//md-select[@placeholder='Datacenter location']");
     private By locationFrankfurt = By.cssSelector("md-select-menu[class='md-overflow']" +
-            " md-option[value='europe-west3'][ng-repeat*='fullRegionList']");
+           " md-option[value='europe-west3'][ng-repeat*='fullRegionList']");
+//private By locationFrankfurt = By.id("select_option_219");//taiwan
+//private By locationFrankfurt = By.xpath("//md-option[@value='europe-west3']");
     private By committedUsage = By.xpath("//md-select[@placeholder='Committed usage']");
     private By usageOneYear = By.id("select_option_100");//было 99
     private By addToEstimateButton = By.xpath("//button[@aria-label='Add to Estimate']");
     private By emailEstimateButton = By.id("email_quote");
-    private By forPasteMailField = By.cssSelector("input[name = description][type=email]");
+    private By forPasteMailField = By.cssSelector("input[name=description][type=email]");
+    //private By forPasteMailField = By.id("input_513");
     private By sendMailButton = By.xpath("//button[@aria-label='Send Email']");
     private By iframeGoogle = By.xpath("//iframe[contains(@name,'goog_')]");
     private By copyCreatedMailButton = By.xpath("//button[@class='btn-rds icon-btn bg-theme click-to-copy']");//кнопка "скопировать", работает
@@ -60,7 +66,7 @@ public class CloudCalculatorPage extends AbstractPage {
     private By countFromMail = By.xpath("//h3[contains (text(), 'USD 1,083.33')]/parent::td");
 
     String keyForNumberOfInstances = String.valueOf(4);
-    //String keysToSendForSearchCalculator = "Google Cloud Platform Pricing Calculator";
+    String keysToSendForSearchCalculator = "Google Cloud Platform Pricing Calculator";
     private final String CloudUrl = "https://cloud.google.com/";
 
 //    @FindBy(xpath = "//button[@aria-label='Add to Estimate']")
@@ -79,8 +85,8 @@ public class CloudCalculatorPage extends AbstractPage {
         driver.findElement(searchForm).click();
         WebElement textForGoogleSearch = driver.findElement(googleSearchSmallButton);
         textForGoogleSearch.click();
-        //textForGoogleSearch.sendKeys(keysToSendForSearchCalculator);
-        textForGoogleSearch.sendKeys(KeysToSendReader.getKeyData(KEYS_FOR_SEARCH_CALC));
+        textForGoogleSearch.sendKeys(keysToSendForSearchCalculator);
+        //textForGoogleSearch.sendKeys(KeysToSendReader.getKeyData(KEYS_FOR_SEARCH_CALC));
         textForGoogleSearch.sendKeys(Keys.ENTER);
         driver.findElement(linkToCalculator).click();
         logger.info("Google cloud calculator opened");
@@ -157,14 +163,24 @@ public class CloudCalculatorPage extends AbstractPage {
 
     public CloudCalculatorPage selectLocalSSD() {
         driver.findElement(variablesLocalSSD).click();
-        driver.findElement(localSSDType).click();
+        WebElement ssd = driver.findElement(localSSDType);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOf(ssd));
+        wait.until(ExpectedConditions.elementToBeClickable(ssd));
+        ssd.click();
+        //driver.findElement(localSSDType).click();
         logger.info("Local SSD was selected");
         return new CloudCalculatorPage(driver);
     }
 
     public CloudCalculatorPage selectDataCenterLocation() {
         driver.findElement(dataCenterLocation).click();
-        driver.findElement(locationFrankfurt).click();
+        WebElement location = driver.findElement(locationFrankfurt);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOf(location));
+        wait.until(ExpectedConditions.elementToBeClickable(location));
+        location.click();
+        //driver.findElement(locationFrankfurt).click();
         logger.info("Location of data center was selected");
         return new CloudCalculatorPage(driver);
     }
@@ -215,7 +231,7 @@ public class CloudCalculatorPage extends AbstractPage {
         driver.switchTo().window(tabs.get(1));
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(200));
         JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("window.scrollBy(0,800)");
+        js.executeScript("window.scrollBy(0,600)");
         WebElement element = wait.until(ExpectedConditions.presenceOfElementLocated(inboxPreviewMail));
         element.click();
         ArrayList<String> tabsNew = new ArrayList<>(driver.getWindowHandles());
@@ -226,6 +242,7 @@ public class CloudCalculatorPage extends AbstractPage {
     }
     public String getCalculatedPrices() {
         String exist = driver.findElement(countFromMail).getText();
+        //String isExist = CharMatcher.inRange('0','9').retainFrom(exist);
         return exist;
     }
 }

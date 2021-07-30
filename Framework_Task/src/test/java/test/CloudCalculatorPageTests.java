@@ -9,7 +9,7 @@ public class CloudCalculatorPageTests extends PageTests{
     public void isCalculatedPriceEqualsExpected() {
         fillTheFormAndReadMail();
         String exist = cloudCalculatorPage.getCalculatedPrices();
-        String expectedMonthPrice = "Total Estimated Cost: USD 1,083.33 per 1 month";
+        String expectedMonthPrice = "USD 1,083.33";//тут заменить
         assertEquals(expectedMonthPrice, exist);
     }
 
