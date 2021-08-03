@@ -41,22 +41,22 @@ public class CloudCalculatorPage extends AbstractPage {
     private By typeOfSeries = By.xpath("//md-select[@name='series']/parent::md-input-container");
     private By series = By.xpath("//md-option[@value='n1']");
     //private By machineTypeContainer = By.xpath("//label[text()='Machine type']/parent::md-input-container");
-    private By machineTypeContainer = By.id("select_93");
+    private By machineTypeContainer = By.id("select_94");
     private By machineType = By.xpath("//md-option[@value='CP-COMPUTEENGINE-VMIMAGE-N1-STANDARD-8']");
     private By addGPUsCheckBox = By.xpath("//md-checkbox[@ng-model='listingCtrl.computeServer.addGPUs']");
-    private By numbersOfGPUs = By.id("select_427");//было 416
-    private By numberOfGPusOne = By.id("select_option_432");//было 421
+    private By numbersOfGPUs = By.id("select_431");//было 416
+    private By numberOfGPusOne = By.id("select_option_436");//было 421
     private By typesOfGPUsContainer = By.xpath("//md-select[@placeholder='GPU type']");
     private By typeOfGPUs = By.xpath("//md-option[@value='NVIDIA_TESLA_V100']");
     private By variablesLocalSSD = By.xpath("//md-select[@placeholder='Local SSD']");
-    private By localSSDType = By.id("select_option_414");//было 403
+    private By localSSDType = By.id("select_option_418");//было 414
     private By dataCenterLocation = By.xpath("//md-select[@placeholder='Datacenter location']");
     private By locationFrankfurt = By.cssSelector("md-select-menu[class='md-overflow']" +
            " md-option[value='europe-west3'][ng-repeat*='fullRegionList']");
 //private By locationFrankfurt = By.id("select_option_219");//taiwan
 //private By locationFrankfurt = By.xpath("//md-option[@value='europe-west3']");
     private By committedUsage = By.xpath("//md-select[@placeholder='Committed usage']");
-    private By usageOneYear = By.id("select_option_100");//было 99
+    private By usageOneYear = By.id("select_option_101");//было 100
     private By addToEstimateButton = By.xpath("//button[@aria-label='Add to Estimate']");
     private By emailEstimateButton = By.id("email_quote");
     private By forPasteMailField = By.cssSelector("input[name=description][type=email]");
