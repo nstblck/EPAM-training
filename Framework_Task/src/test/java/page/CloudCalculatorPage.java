@@ -37,7 +37,7 @@ public class CloudCalculatorPage extends AbstractPage {
     private By operatingSystem = By.xpath("//md-option[@value='free']");
     private By machineClassContainer = By.xpath("//md-input-container[@class='md-input-has-placeholder flex md-input-has-value']");
     //private By machineClass = By.id("select_option_81");
-    private By machineClass = By.id("select_value_label_61");
+    private By machineClass = By.id("select_option_82");
     private By typeOfSeries = By.xpath("//md-select[@name='series']/parent::md-input-container");
     private By series = By.xpath("//md-option[@value='n1']");
     //private By machineTypeContainer = By.xpath("//label[text()='Machine type']/parent::md-input-container");
