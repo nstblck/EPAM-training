@@ -39,7 +39,8 @@ public class CloudCalculatorPage extends AbstractPage {
     private By machineClass = By.id("select_option_81");
     private By typeOfSeries = By.xpath("//md-select[@name='series']/parent::md-input-container");
     private By series = By.xpath("//md-option[@value='n1']");
-    private By machineTypeContainer = By.xpath("//label[text()='Machine type']/parent::md-input-container");
+    //private By machineTypeContainer = By.xpath("//label[text()='Machine type']/parent::md-input-container");
+    private By machineTypeContainer = By.id("select_93");
     private By machineType = By.xpath("//md-option[@value='CP-COMPUTEENGINE-VMIMAGE-N1-STANDARD-8']");
     private By addGPUsCheckBox = By.xpath("//md-checkbox[@ng-model='listingCtrl.computeServer.addGPUs']");
     private By numbersOfGPUs = By.id("select_427");//было 416
