@@ -9,7 +9,7 @@ public class CloudCalculatorPageTests extends PageTests{
     public void isCalculatedPriceEqualsExpected() {
         fillTheFormAndReadMail();
         String exist = cloudCalculatorPage.getCalculatedPrices();
-        String expectedMonthPrice = "USD 1,083.33";//тут заменить
+        String expectedMonthPrice = "USD 1,083.33";
         assertEquals(expectedMonthPrice, exist);
     }
 
