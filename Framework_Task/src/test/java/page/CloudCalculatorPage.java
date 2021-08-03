@@ -58,7 +58,7 @@ public class CloudCalculatorPage extends AbstractPage {
     private By addToEstimateButton = By.xpath("//button[@aria-label='Add to Estimate']");
     private By emailEstimateButton = By.id("email_quote");
     private By forPasteMailField = By.cssSelector("input[name=description][type=email]");
-    //private By forPasteMailField = By.id("input_513");
+    //private By forPasteMailField = By.id("input_417");
     private By sendMailButton = By.xpath("//button[@aria-label='Send Email']");
     private By iframeGoogle = By.xpath("//iframe[contains(@name,'goog_')]");
     private By copyCreatedMailButton = By.xpath("//button[@class='btn-rds icon-btn bg-theme click-to-copy']");//кнопка "скопировать", работает
@@ -216,7 +216,11 @@ public class CloudCalculatorPage extends AbstractPage {
         driver.switchTo().frame(element);
         driver.switchTo().frame("myFrame");
         driver.findElement(emailEstimateButton).click();
-        driver.findElement(forPasteMailField).click();
+        WebElement fieldForEmail = driver.findElement(forPasteMailField);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.visibilityOf(fieldForEmail));
+        wait.until(ExpectedConditions.elementToBeClickable(fieldForEmail));
+        fieldForEmail.click();
         Actions actionProvider = new Actions(driver);
         Action keyDown = actionProvider.keyDown(Keys.COMMAND).sendKeys("v").build();
         keyDown.perform();
