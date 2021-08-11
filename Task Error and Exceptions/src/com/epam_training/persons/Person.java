@@ -1,11 +1,14 @@
-package com.epam_training;
+package com.epam_training.persons;
 
 public abstract class Person {
-    private String name;
+    protected String name;
 
 
     public Person(String name) {
         this.name = name;
+    }
+
+    protected Person() {
     }
 
     public String getName() {
