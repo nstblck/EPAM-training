@@ -14,11 +14,9 @@ public class Journal {
         journal = new HashMap<>();
     }
 
-
     public void setMark(Student student, Subject subject, int mark) throws IllegalArgumentException {
         journal.get(student.getId()).add(new Mark(subject, mark));
     }
-
 
     //Посчитать средний балл по всем предметам студента
     public Double getAverageCount(Student student){
