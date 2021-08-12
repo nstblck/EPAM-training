@@ -32,7 +32,7 @@ public class University {
             if (student.getName().equals(name))
                 return student;
         }
-        return null; // ToDo: replace with exceptions
+        throw new NullPointerException("No student");
     }
 
     public void addMark(Student a, Subject subject, Integer mark) {
@@ -92,21 +92,21 @@ public class University {
 
     public void averageMarkOfStudent() {
         Double result = journal.getAverageCount(studentsFromUniversity.get(0));
-        System.out.println("Средняя оценка по предмету равна" + result);
+        System.out.println("Средняя оценка по предмету равна " + result);
     }
 
     public void averageMarkOfGroup() {
         Double result = journal.getAverageCount(Subject.CHEMISTRY, getStudentsFromGroup(Group.AST_071));
-        System.out.println("Средняя оценка по предмету для всей группы равна" + result);
+        System.out.println("Средняя оценка по предмету для всей группы равна " + result);
     }
 
     public void averageMarkOfFaculty() {
         Double result = journal.getAverageCount(Subject.CHEMISTRY, getStudentsFromFaculty(Faculty.CONSTRUCTION));
-        System.out.println("Средняя оценка по предмету для всего факультета равна" + result);
+        System.out.println("Средняя оценка по предмету для всего факультета равна " + result);
     }
 
     public void averageMarkOfUniversity() {
         Double result = journal.getAverageCount(Subject.CHEMISTRY);
-        System.out.println("Средняя оценка по предмету для всего университета равна" + result);
+        System.out.println("Средняя оценка по предмету для всего университета равна " + result);
     }
 }

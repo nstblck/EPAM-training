@@ -4,9 +4,11 @@ import com.epam_training.persons.Student;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Journal {
-    private HashMap<Integer, ArrayList<Mark>> journal;
+    private Map<Integer, List<Mark>> journal;
 
     public Journal() {
         journal = new HashMap<>();
@@ -20,13 +22,13 @@ public class Journal {
 
     //Посчитать средний балл по всем предметам студента
     public Double getAverageCount(Student student){
-        int countOfMarks = journal.get(student).size();
+        int countOfMarks = journal.get(student.getId()).size();
         if (countOfMarks == 0) {
             throw new IllegalArgumentException("This student haven't any subject!");
         }
         int summ = 0;
-        for (Integer mark : journal.get(student).values()) {
-            summ += mark;
+        for (Mark mark : journal.get(student.getId())) {
+            summ += mark.getMark();
         }
         return ((double) summ) / countOfMarks;
     }
@@ -39,8 +41,11 @@ public class Journal {
         }
         int summ = 0;
         for (Student student : studentsFromUniversity) {
-            int mark = journal.get(student).get(subject);
-            summ += mark;
+            for (Mark mark : journal.get(student.getId())) {
+                if (subject.equals(mark.getSubject())) {
+                    summ += mark.getMark();
+                }
+            }
         }
         return ((double) summ) / countOfMarks;
     }
@@ -49,10 +54,12 @@ public class Journal {
     public Double getAverageCount(Subject subject) {
         int countOfMarks = 0;
         int summ = 0;
-        for (HashMap<Subject, Integer> j : journal.values()) {
-            if (j.containsKey(subject)) {
-                countOfMarks++;
-                summ += j.get(subject);
+        for (List<Mark> marks : journal.values()) {
+            for (Mark mark : marks) {
+                if (subject.equals(mark.getSubject())) {
+                    summ += mark.getMark();
+                    countOfMarks += 1;
+                }
             }
         }
         if (countOfMarks == 0) {
@@ -62,6 +69,6 @@ public class Journal {
     }
 
     public void addStudent(Student a) {
-        journal.put(a.getId(), new HashMap<>());
+        journal.put(a.getId(), new ArrayList<>());
     }
 }
