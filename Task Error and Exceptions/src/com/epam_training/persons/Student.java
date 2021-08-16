@@ -8,6 +8,7 @@ public class Student extends Person {
     private static int iD;
     private Faculty faculty;
     private Group group;
+    //private List<String> subjects;
 
     public Student(String name, Faculty faculty, Group group) {
         this();

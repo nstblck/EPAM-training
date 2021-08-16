@@ -15,7 +15,7 @@ public class Mark {
         return subject;
     }
 
-    public Mark(Subject subject, Integer mark) throws IllegalArgumentException {
+    public Mark(Subject subject, Integer mark) {
         if (mark < 0 | mark > 10) {
             throw new IllegalArgumentException("Isn't a valid mark, must be from 0 to 10");
         }

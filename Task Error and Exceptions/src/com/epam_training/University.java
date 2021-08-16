@@ -1,5 +1,7 @@
 package com.epam_training;
 
+import com.epam_training.exceptions.NoAvailableStudentsException;
+import com.epam_training.exceptions.NoMarksException;
 import com.epam_training.faculties.Faculty;
 import com.epam_training.groups.Group;
 import com.epam_training.mark.Journal;
@@ -11,15 +13,11 @@ import java.util.List;
 
 public class University {
     private Journal journal;
-    private ArrayList<Student> studentsFromUniversity;
+    private List<Student> studentsFromUniversity;
 
     public University() {
-
-//        studentsFromUniversity.add(new Student("Грачов", Faculty.CIVIL_ENGINEERING, Group.AKP_081));
         journal = new Journal();
         studentsFromUniversity = new ArrayList<>();
-//        Mark mark = new Mark();
-//        mark.setMarksToStudent();
     }
 
     public void addStudent(Student a) {
@@ -28,7 +26,7 @@ public class University {
     }
 
     public Student getStudent(String name) {
-        for (Student student: studentsFromUniversity) {
+        for (Student student : studentsFromUniversity) {
             if (student.getName().equals(name))
                 return student;
         }
@@ -62,14 +60,14 @@ public class University {
         return subjectsByGroup;
     }
 
-    public ArrayList<Student> getStudentsFromGroup(Group group) throws NullPointerException {
+    public ArrayList<Student> getStudentsFromGroup(Group group) throws NoAvailableStudentsException {
         ArrayList<Student> studentsSelectionBySameGroup = new ArrayList<>();
         for (Student student : studentsFromUniversity) {
             if (student.getGroup().equals(group))
                 studentsSelectionBySameGroup.add(student);
         }
         if (studentsSelectionBySameGroup.isEmpty()) {
-            throw new NullPointerException("No students in the group!");
+            throw new NoAvailableStudentsException("No students in the group!");
         }
         return studentsSelectionBySameGroup;
     }
@@ -87,26 +85,24 @@ public class University {
         return studentsSelectionBySameFaculty;
     }
 
-//    public void setMarksToStudent() throws MyCustomException {
-//    }
-
-    public void averageMarkOfStudent() {
+    public void averageMarkOfStudent() throws NoMarksException {
         Double result = journal.getAverageCount(studentsFromUniversity.get(0));
         System.out.println("Средняя оценка по предмету равна " + result);
     }
 
-    public void averageMarkOfGroup() {
-        Double result = journal.getAverageCount(Subject.CHEMISTRY, getStudentsFromGroup(Group.AST_071));
+    public void averageMarkOfGroup() throws NoMarksException, NoAvailableStudentsException {
+        Double result = journal.getAverageCountBySubjectAndStudentsInGroup(Subject.CHEMISTRY, getStudentsFromGroup(Group.AST_071));
         System.out.println("Средняя оценка по предмету для всей группы равна " + result);
     }
 
-    public void averageMarkOfFaculty() {
-        Double result = journal.getAverageCount(Subject.CHEMISTRY, getStudentsFromFaculty(Faculty.CONSTRUCTION));
+    public void averageMarkOfFaculty() throws NoMarksException {
+        Double result = journal.getAverageCountBySubjectAndStudentsInGroup(Subject.CHEMISTRY, getStudentsFromFaculty(Faculty.CONSTRUCTION));
         System.out.println("Средняя оценка по предмету для всего факультета равна " + result);
     }
 
-    public void averageMarkOfUniversity() {
-        Double result = journal.getAverageCount(Subject.CHEMISTRY);
+    public void averageMarkOfUniversity() throws NoMarksException {
+        Double result = journal.getAverageCountBySubjectInUniversity(Subject.CHEMISTRY);
         System.out.println("Средняя оценка по предмету для всего университета равна " + result);
     }
+
 }

@@ -1,19 +1,22 @@
 package com.epam_training;
 
 
+import com.epam_training.exceptions.NoAvailableStudentsException;
+import com.epam_training.exceptions.NoMarksException;
 import com.epam_training.faculties.Faculty;
 import com.epam_training.groups.Group;
 import com.epam_training.mark.Subject;
 import com.epam_training.persons.Student;
 
 public class Main {
-    
+
     // University ->> Arraylist<Faculty> --> Araylist<Group> ....
     // university.getFaculty(Faculty.CONSTRUCTION).getGroup(Group.AST_071).addStudent("Иванов");
     // university.getFaculty(Faculty.CONSTRUCTION).getAverageMark();
 
     public static void main(String[] args) {
         University university = new University();
+
         university.addStudent(new Student("Иванов", Faculty.CONSTRUCTION, Group.AST_071));
         university.addStudent(new Student("Ахметова", Faculty.CONSTRUCTION, Group.AST_071));
         university.addStudent(new Student("Агинская", Faculty.CONSTRUCTION, Group.AST_072));
@@ -53,8 +56,20 @@ public class Main {
         university.addMark(university.getStudent("Белякова"), Subject.LANGUAGE, 6);
         university.addMark(university.getStudent("Белякова"), Subject.TECHNICAL_DRAWING, 8);
 
-        university.averageMarkOfStudent();
-        university.averageMarkOfGroup();
-        university.averageMarkOfFaculty();
+        try {
+            university.averageMarkOfStudent();
+        } catch (NoMarksException e) {
+            e.printStackTrace();
+        }
+        try {
+            university.averageMarkOfGroup();
+        } catch (NoMarksException | NoAvailableStudentsException e) {
+            e.printStackTrace();
+        }
+        try {
+            university.averageMarkOfFaculty();
+        } catch (NoMarksException e) {
+            e.printStackTrace();
+        }
     }
 }

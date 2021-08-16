@@ -1,5 +1,6 @@
 package com.epam_training.mark;
 
+import com.epam_training.exceptions.NoMarksException;
 import com.epam_training.persons.Student;
 
 import java.util.ArrayList;
@@ -14,42 +15,57 @@ public class Journal {
         journal = new HashMap<>();
     }
 
-    public void setMark(Student student, Subject subject, int mark) throws IllegalArgumentException {
+    public void setMark(Student student, Subject subject, int mark) {
         journal.get(student.getId()).add(new Mark(subject, mark));
     }
 
+
+    public List<Mark> getStudentMarks(Student student){
+        return journal.getOrDefault(student.getId(), new ArrayList<>());
+    }
+
     //Посчитать средний балл по всем предметам студента
-    public Double getAverageCount(Student student){
-        int countOfMarks = journal.get(student.getId()).size();
+    public double getAverageCount(Student student) throws NoMarksException {
+        List<Mark> marks = getStudentMarks(student);
+        if (marks.isEmpty()) {
+            throw new NoMarksException("This student haven't any marks!");
+        }
+
+        int countOfMarks = marks.size();
         if (countOfMarks == 0) {
-            throw new IllegalArgumentException("This student haven't any subject!");
+            throw new NoMarksException("This student haven't any marks!");
         }
         int summ = 0;
-        for (Mark mark : journal.get(student.getId())) {
+        for (Mark mark : marks) {
             summ += mark.getMark();
         }
         return ((double) summ) / countOfMarks;
     }
 
+
     //Посчитать средний балл по конкретному предмету в конкретной группе
-    public Double getAverageCount(Subject subject, ArrayList<Student> studentsFromUniversity){
-        int countOfMarks = studentsFromUniversity.size();
-        if (countOfMarks == 0) {
-            throw new ArithmeticException("This group or faculty haven't any students");
-        }
+    public double getAverageCountBySubjectAndStudentsInGroup(Subject subject, List<Student> studentsFromUniversity)
+            throws NoMarksException {
         int summ = 0;
+        int count = 0;
         for (Student student : studentsFromUniversity) {
-            for (Mark mark : journal.get(student.getId())) {
+            for (Mark mark : getStudentMarks(student)) {
                 if (subject.equals(mark.getSubject())) {
+
                     summ += mark.getMark();
+                    count++;
                 }
             }
         }
-        return ((double) summ) / countOfMarks;
+        if (count == 0) {
+            throw new NoMarksException("This group or faculty haven't any students");
+        }
+        return ((double) summ) / count;
     }
 
     //Посчитать средний балл по предмету для всего университета
-    public Double getAverageCount(Subject subject) {
+    public double getAverageCountBySubjectInUniversity(Subject subject)
+            throws NoMarksException {
         int countOfMarks = 0;
         int summ = 0;
         for (List<Mark> marks : journal.values()) {
@@ -61,7 +77,7 @@ public class Journal {
             }
         }
         if (countOfMarks == 0) {
-            throw new ArithmeticException("No any faculties in the university");
+            throw new NoMarksException("No marks!");
         }
         return ((double) summ) / countOfMarks;
     }
